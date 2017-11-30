@@ -1,0 +1,74 @@
+<!--
+  Generated template for the AccountDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Account</ion-title>
+    <ion-buttons end>
+		<button ion-button icon-left (click)="saveAccount()">
+			Save
+		</button>
+	</ion-buttons> 
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<form class="list" [formGroup]="accountForm">
+		<ion-list>
+			<ion-item>
+			    <ion-label fixed>Account</ion-label>
+				<ion-input type="text" formControlName="account" value="{{account?account.account:''}}"></ion-input>
+				
+			  </ion-item>
+			  <ion-item *ngIf="accountForm.controls.account.dirty && !accountForm.controls.account.valid">
+					<p *ngIf="accountForm.controls.account.errors.required">
+					Account is required!
+					</p>
+			  </ion-item>
+			<ion-item>
+				<ion-label fixed>Account Type</ion-label>
+				<ion-select formControlName="accountType" [(ngModel)]="accountType">
+					<ion-option value="1" >eMail</ion-option>
+					<ion-option value="2">Internet</ion-option>
+					<ion-option value="3">Network</ion-option>
+					<ion-option value="4">Web</ion-option>
+					<ion-option value="5">Windows</ion-option>
+				  </ion-select>
+				<!-- <ion-input type="text" formControlName="accountType"></ion-input> -->
+		  	</ion-item>
+			<ion-item>
+			    <ion-label fixed>Username</ion-label>
+			    <ion-input type="text" formControlName="username" value="{{account?account.username:''}}"></ion-input>
+		  	</ion-item>
+			<ion-item>
+			    <ion-label fixed>Email</ion-label>
+			    <ion-input type="text" formControlName="email" value="{{account?account.email:''}}"></ion-input>
+		  	</ion-item>
+			<ion-item>
+			    <ion-label fixed>Password</ion-label>
+			    <ion-input type="{{isShowPassword?'text':'password'}}" formControlName="password" value="{{account?account.password:''}}"></ion-input>
+		  	</ion-item>
+			  <ion-item *ngIf="accountForm.controls.password.dirty && !accountForm.controls.password.valid">
+					<p *ngIf="accountForm.controls.password.errors.required">
+					Password is required!
+					</p>
+			  </ion-item>
+			<ion-item>
+			    <ion-label floating>URL</ion-label>
+			    <ion-input type="text" formControlName="url" value="{{account?account.url:''}}"></ion-input>
+		  	</ion-item>
+			<ion-item>
+			    <ion-label floating>Note</ion-label>
+			    <ion-input type="text" formControlName="note" value="{{account?account.note:''}}"></ion-input>
+		  	</ion-item>
+		  	<ion-item>
+		  		<button ion-button block (click)="togglePassword()">{{isShowPassword?"Hide Password":"Show Password"}}</button>
+		  	</ion-item>
+		</ion-list>
+	</form>
+</ion-content>

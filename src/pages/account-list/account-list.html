@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Account Lists
+    </ion-title>
+    <ion-buttons end>
+		<button ion-button icon-left (click)="addAccount()">
+			<ion-icon name="add"></ion-icon>
+		</button>
+	</ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list>
+		<ion-item *ngFor="let account of accounts" detail-push (click)="showAccount(account)">
+			<ion-icon start-item name="{{icons[account.accountType]}}"></ion-icon>
+			{{account.account}}
+		</ion-item>
+	</ion-list>
+</ion-content>
